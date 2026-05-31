@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' b:templateVersion='1.0.0' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+<link expr:href='data:blog.blogspotFaviconUrl' rel='icon'/>
+<meta charset='UTF-8'/>
+<meta content='width=device-width, initial-scale=1.0' name='viewport'/>
+<meta content='IE=edge' http-equiv='X-UA-Compatible'/>
+<meta content='index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1' name='robots'/>
+
+<!-- Judul Dinamis per halaman -->
+<b:if cond='data:view.isPost'>
+  <b:loop values='data:posts' var='post'>
+    <title><data:post.title/> &#8212; <data:blog.title/></title>
+  </b:loop>
+<b:elseif cond='data:view.isPage'/>
+  <b:loop values='data:posts' var='post'>
+    <title><data:post.title/> &#8212; <data:blog.title/></title>
+  </b:loop>
+<b:else/>
+  <title><data:blog.pageTitle/></title>
+</b:if>
+
+<!-- Meta Description -->
+<b:if cond='data:view.isPost'>
+  <b:loop values='data:posts' var='post'>
+    <meta expr:content='data:post.snippet' name='description'/>
+  </b:loop>
+<b:else/>
+  <meta expr:content='data:blog.metaDescription' name='description'/>
+</b:if>
+
+<!-- Open Graph Dinamis -->
+<b:if cond='data:view.isPost'>
+  <b:loop values='data:posts' var='post'>
+    <meta content='article' property='og:type'/>
+    <meta expr:content='data:post.title + &quot; — &quot; + data:blog.title' property='og:title'/>
+    <meta expr:content='data:post.snippets.short' property='og:description'/>
+    <meta expr:content='data:post.url' property='og:url'/>
+    <b:if cond='data:post.featuredImage'>
+      <meta expr:content='data:post.featuredImage.url' property='og:image'/>
+      <meta expr:content='data:post.featuredImage.url' property='og:image:secure_url'/>
+      <meta content='1200' property='og:image:width'/>
+      <meta content='630' property='og:image:height'/>
+      <meta content='image/jpeg' property='og:image:type'/>
+    <b:elseif cond='data:post.firstImageUrl'/>
+      <meta expr:content='data:post.firstImageUrl' property='og:image'/>
+      <meta expr:content='data:post.firstImageUrl' property='og:image:secure_url'/>
+      <meta content='1200' property='og:image:width'/>
+      <meta content='630' property='og:image:height'/>
+      <meta content='image/jpeg' property='og:image:type'/>
+    <b:else/>
+      <b:if cond='data:post.labels'>
+        <b:loop values='data:post.labels' var='label'>
+          <b:if cond='data:label.isFirst'>
+            <meta expr:content='&quot;https://og-image-generator.vercel.app/api/image?title=&quot; + data:post.title + &quot;&amp;tags=&quot; + data:label.name + &quot;&amp;theme=dark&quot;' property='og:image'/>
+            <meta expr:content='&quot;https://og-image-generator.vercel.app/api/image?title=&quot; + data:post.title + &quot;&amp;tags=&quot; + data:label.name + &quot;&amp;theme=dark&quot;' property='og:image:secure_url'/>
+          </b:if>
+        </b:loop>
+      <b:else/>
+        <meta expr:content='&quot;https://og-image-generator.vercel.app/api/image?title=&quot; + data:post.title + &quot;&amp;theme=dark&quot;' property='og:image'/>
+        <meta expr:content='&quot;https://og-image-generator.vercel.app/api/image?title=&quot; + data:post.title + &quot;&amp;theme=dark&quot;' property='og:image:secure_url'/>
+      </b:if>
+      <meta content='1200' property='og:image:width'/>
+      <meta content='630' property='og:image:height'/>
+      <meta content='image/png' property='og:image:type'/>
+    </b:if>
+  </b:loop>
+<b:else/>
+  <meta content='website' property='og:type'/>
+  <meta expr:content='data:blog.title' property='og:title'/>
+  <meta expr:content='data:blog.metaDescription' property='og:description'/>
+  <meta expr:content='data:blog.canonicalUrl' property='og:url'/>
+  <meta content='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi6No4pmCHi90F7I6UTDLqrC1LeWX6QDf9dAv1aS14CvGLtCFTtj5TPgTgyRYcVBlKhz3NH71lssgSPbLaHIy7i-UOrZ10NxB_xA2bM5tZvnpwT1O-GBmafw0FSh2FqK3NaooFwffgJAhnUvIeZAX58WsKiuwh_rUZhzYMDSvyNPZV72Cyy-GiUfIvn4nNf/s1024/icon%20keren%20blog.png' property='og:image'/>
+  <meta content='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi6No4pmCHi90F7I6UTDLqrC1LeWX6QDf9dAv1aS14CvGLtCFTtj5TPgTgyRYcVBlKhz3NH71lssgSPbLaHIy7i-UOrZ10NxB_xA2bM5tZvnpwT1O-GBmafw0FSh2FqK3NaooFwffgJAhnUvIeZAX58WsKiuwh_rUZhzYMDSvyNPZV72Cyy-GiUfIvn4nNf/s1024/icon%20keren%20blog.png' property='og:image:secure_url'/>
+  <meta content='1200' property='og:image:width'/>
+  <meta content='630' property='og:image:height'/>
+  <meta content='image/png' property='og:image:type'/>
+</b:if>
+<meta expr:content='data:blog.title' property='og:site_name'/>
+
+<!-- Twitter Card Dinamis -->
+<meta content='summary_large_image' name='twitter:card'/>
+<meta content='@kangtoer' name='twitter:site'/>
+<b:if cond='data:view.isPost'>
+  <b:loop values='data:posts' var='post'>
+    <meta expr:content='data:post.title' name='twitter:title'/>
+    <meta expr:content='data:post.snippet' name='twitter:description'/>
+    <b:if cond='data:post.featuredImage'>
+      <meta expr:content='data:post.featuredImage.url' name='twitter:image'/>
+      <meta expr:content='data:post.title' name='twitter:image:alt'/>
+    <b:elseif cond='data:post.firstImageUrl'/>
+      <meta expr:content='data:post.firstImageUrl' name='twitter:image'/>
+      <meta expr:content='data:post.title' name='twitter:image:alt'/>
+    <b:else/>
+      <b:if cond='data:post.labels'>
+        <b:loop values='data:post.labels' var='label'>
+          <b:if cond='data:label.isFirst'>
+            <meta expr:content='&quot;https://og-image-generator.vercel.app/api/image?title=&quot; + data:post.title + &quot;&amp;tags=&quot; + data:label.name + &quot;&amp;theme=dark&quot;' name='twitter:image'/>
+          </b:if>
+        </b:loop>
+      <b:else/>
+        <meta expr:content='&quot;https://og-image-generator.vercel.app/api/image?title=&quot; + data:post.title + &quot;&amp;theme=dark&quot;' name='twitter:image'/>
+      </b:if>
+      <meta expr:content='data:post.title' name='twitter:image:alt'/>
+    </b:if>
+  </b:loop>
+<b:else/>
+  <meta expr:content='data:blog.title' name='twitter:title'/>
+  <meta expr:content='data:blog.metaDescription' name='twitter:description'/>
+  <meta content='https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiBfKzOqGJuqeXRgBzC4wQGZbH7T_fYEkMMQ3gYaArGFQA8GCT-Q6QHm1b3i7e1E6XuVfgJPXiSKqYEj7T0fae8sO5h_AzW_HKSHQYBmBP0R9GDtMg/s1200/og-default-image.png' name='twitter:image'/>
+</b:if>
+
+<link expr:href='data:view.url' rel='canonical'/>
+
+<link href='https://fonts.googleapis.com' rel='preconnect'/>
+<link crossorigin='crossorigin' href='https://fonts.gstatic.com' rel='preconnect'/>
+<link href='https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Playfair+Display:wght@700;800&amp;display=swap' rel='stylesheet'/>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css' rel='stylesheet'/>
+
+<b:skin><![CDATA[
+/* ================================================
+   CATATAN GURU IPS — V4 PREMIUM EDITION (SYNCED)
+   Design: Modern Clean Editorial (No Black)
+   Color Theme: White, Cyan, Slate
+   Status: Stable Fix for XML Parsing
+================================================ */
+
+:root {
+  --primary: #0891b2; /* cyan-600 */
+  --primary-light: #ecfeff;
+  --secondary: #6366f1; /* indigo-600 */
+  --accent: #f43f5e; /* rose-600 */
+  --gradient-brand: linear-gradient(135deg, #0891b2 0%, #6366f1 100%);
+  
+  --bg-primary: #f8fafc; /* slate-50 */
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --text-primary: #0f172a; /* slate-900 */
+  --text-secondary: #475569; /* slate-600 */
+  --text-muted: #94a3b8;
+  
+  --border: #e2e8f0;
+  --radius-xl: 32px;
+  --radius-2xl: 48px;
+  --shadow-card: 0 4px 20px rgba(0,0,0,0.05);
+  --header-h: 80px;
+}
+
+body { font-family: 'Plus Jakarta Sans', sans-serif; background: var(--bg-primary); color: var(--text-primary); margin: 0; }
+a { text-decoration: none; transition: 0.3s; }
+
+#site-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  height: var(--header-h); background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(16px); border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: space-between; padding: 0 40px;
+}
+
+.logo-text { font-weight: 900; font-size: 1.25rem; letter-spacing: -1px; background: var(--gradient-brand); -webkit-background-clip: text; -webkit-fill-color: transparent; background-clip: text; color: transparent; }
+
+.hero-section { padding: 160px 40px 80px; text-align: center; }
+.hero-title { font-size: 4rem; font-weight: 900; letter-spacing: -3px; line-height: 0.9; margin-bottom: 24px; }
+.hero-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; max-width: 1200px; margin: 60px auto; }
+
+.card { background: white; border-radius: var(--radius-xl); padding: 40px; border: 1px solid var(--border); transition: 0.3s; text-align: left; }
+.card:hover { transform: translateY(-10px); border-color: var(--primary); box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+.card.featured { background: var(--gradient-brand); color: white; border: none; }
+.card.featured h3, .card.featured p { color: white; }
+
+.ai-feed-section { background: white; border-radius: var(--radius-2xl); border: 1px solid var(--border); margin: 0 40px 100px; padding: 80px; box-shadow: var(--shadow-card); }
+
+.post-card { background: white; border-radius: var(--radius-xl); border: 1px solid var(--border); margin-bottom: 40px; overflow: hidden; }
+.post-card-content { padding: 32px; }
+
+.footer-social-link {
+  width: 44px; height: 44px; border-radius: 12px; background: #f1f5f9;
+  display: flex; align-items: center; justify-content: center; color: #94a3b8;
+  transition: all 0.2s;
+}
+.footer-social-link:hover.fb { color: #1877F2; background: #eff6ff; }
+.footer-social-link:hover.tw { color: #1DA1F2; background: #f0f9ff; }
+.footer-social-link:hover.ig { color: #E4405F; background: #fdf2f8; }
+.footer-social-link:hover.yt { color: #FF0000; background: #fef2f2; }
+.footer-social-link:hover.wa { color: #25D366; background: #f0fdf4; }
+
+]]></b:skin>
+</head>
+<body>
+
+<header id='site-header'>
+  <a class='logo-text' expr:href='data:blog.homepageUrl'>CATATAN GURU IPS</a>
+  <div class='nav-links' style='display: flex; gap: 24px; font-weight: 700; font-size: 14px;'>
+    <a href='/' style='color: var(--text-primary);'>Beranda</a>
+    <a href='/search/label/Perangkat' style='color: var(--text-secondary);'>Perangkat</a>
+    <a href='/search/label/HOTS' style='color: var(--text-secondary);'>Bank Soal</a>
+    <a href='/search/label/EdTech' style='color: var(--text-secondary);'>EdTech</a>
+  </div>
+</header>
+
+<b:if cond='data:view.isHomepage'>
+  <section class='hero-section'>
+    <h1 class='hero-title'>Digital <span style='color: var(--primary);'>Resources</span> for Social Science.</h1>
+    <p style='font-size: 1.25rem; color: var(--text-secondary); max-width: 600px; margin: 0 auto;'>Platform futuristik untuk guru modern: menyederhanakan administrasi dengan AI.</p>
+    
+    <div class='hero-grid'>
+      <div class='card'>
+        <div style='width: 50px; height: 50px; background: #ecfeff; color: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;'><i class='fas fa-book-open fa-lg'/></div>
+        <h3>Perangkat Ajar</h3>
+        <p>Modul Ajar dan ATP Kurikulum Merdeka Fase D terbaru.</p>
+      </div>
+      <div class='card featured'>
+        <div style='width: 50px; height: 50px; background: rgba(255,255,255,0.2); color: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;'><i class='fas fa-brain fa-lg'/></div>
+        <h3>Bank Soal HOTS</h3>
+        <p>Latihan soal C4-C6 untuk melatih nalar kritis siswa.</p>
+      </div>
+      <div class='card'>
+        <div style='width: 50px; height: 50px; background: #ecfeff; color: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 24px;'><i class='fas fa-rocket fa-lg'/></div>
+        <h3>EdTech Tools</h3>
+        <p>Tutorial AI dan platform pembelajaran interaktif.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class='ai-feed-section'>
+     <div style='text-align: left;'>
+        <span style='background: #ecfeff; color: #0891b2; padding: 4px 12px; border-radius: 8px; font-size: 10px; font-weight: 900; letter-spacing: 2px;'>AI CURATED FEED</span>
+        <h2 style='font-size: 3rem; font-weight: 900; margin-top: 16px;'>Berita &amp; <span style='color: var(--primary);'>Referensi AI.</span></h2>
+        <div style='display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; margin-top: 40px;'>
+           <!-- Mock AI Items -->
+           <div style='padding: 32px; background: #f8fafc; border-radius: 24px; border: 1px solid #e2e8f0;'>
+              <h4 style='margin-bottom: 12px;'>Inovasi Pembelajaran IPS 2026</h4>
+              <p style='font-size: 14px; color: var(--text-secondary);'>Eksplorasi Metaverse dalam memahami sejarah lokal secara imersif.</p>
+           </div>
+           <div style='padding: 32px; background: #f8fafc; border-radius: 24px; border: 1px solid #e2e8f0;'>
+              <h4 style='margin-bottom: 12px;'>Update ChatGPT untuk Guru</h4>
+              <p style='font-size: 14px; color: var(--text-secondary);'>Cara aman menggunakan AI untuk menyusun administrasi kelas.</p>
+           </div>
+        </div>
+     </div>
+  </section>
+</b:if>
+
+<div class='container' style='max-width: 1200px; margin: 0 auto; padding: 0 40px;'>
+  <b:section class='main' id='main' showaddelement='yes'>
+     <b:widget id='Blog1' locked='true' title='Postingan Blog' type='Blog' version='2' visible='true'>
+        <b:includable id='main' var='this'>
+           <b:loop values='data:posts' var='post'>
+              <article class='post-card'>
+                 <b:if cond='data:post.featuredImage'>
+                    <img expr:src='data:post.featuredImage.url' style='width: 100%; height: 350px; object-fit: cover;'/>
+                 </b:if>
+                 <div class='post-card-content'>
+                    <h2 style='font-size: 1.75rem; font-weight: 900;'><a expr:href='data:post.url' style='color: inherit;'><data:post.title/></a></h2>
+                    <p style='color: var(--text-secondary); margin: 20px 0;'><data:post.snippet/></p>
+                    <div style='display: flex; justify-content: space-between; border-top: 1px solid #f1f5f9; pt: 20px;'>
+                       <a expr:href='data:post.url' style='font-weight: 800; color: var(--primary);'>Baca Selengkapnya</a>
+                       <div style='display: flex; gap: 12px;'>
+                          <a expr:href='&quot;https://www.facebook.com/sharer/sharer.php?u=&quot; + data:post.url' style='color: #1877F2;' target='_blank'><i class='fab fa-facebook'/></a>
+                          <a expr:href='&quot;https://twitter.com/intent/tweet?url=&quot; + data:post.url' style='color: #1DA1F2;' target='_blank'><i class='fab fa-twitter'/></a>
+                          <a expr:href='&quot;https://api.whatsapp.com/send?text=&quot; + data:post.url' style='color: #25D366;' target='_blank'><i class='fab fa-whatsapp'/></a>
+                       </div>
+                    </div>
+                 </div>
+              </article>
+           </b:loop>
+        </b:includable>
+     </b:widget>
+  </b:section>
+</div>
+
+<footer style='background: white; border-top: 1px solid #e2e8f0; padding: 100px 40px 40px;'>
+  <div style='max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 60px;'>
+    <div>
+      <h3 class='logo-text'>CATATAN GURU IPS</h3>
+      <p style='color: var(--text-secondary); margin: 24px 0;'>Educate, Empowering, Social and Nature. Pengabdian melalui literasi digital.</p>
+      <div style='display: flex; gap: 12px;'>
+          <a class='footer-social-link fb' href='https://facebook.com/pamungkas.toer' target='_blank'><i class='fab fa-facebook-f'/></a>
+          <a class='footer-social-link tw' href='https://x.com/@kangtoer' target='_blank'><i class='fab fa-x-twitter'/></a>
+          <a class='footer-social-link ig' href='https://instagram.com/kangtoer' target='_blank'><i class='fab fa-instagram'/></a>
+          <a class='footer-social-link yt' href='https://www.youtube.com/@KangToer' target='_blank'><i class='fab fa-youtube'/></a>
+          <a class='footer-social-link wa' href='https://whatsapp.com/channel/0029Vb6R2Ny2v1J1dll5Mq27' target='_blank'><i class='fab fa-whatsapp'/></a>
+      </div>
+    </div>
+    <div>
+       <h4 style='text-transform: uppercase; font-size: 11px; letter-spacing: 2px; color: var(--primary);'>Navigasi</h4>
+       <ul style='list-style: none; padding: 0; margin-top: 24px; color: var(--text-secondary); line-height: 2.5;'>
+          <li><a href='/search/label/Perangkat' style='color: inherit;'>Perangkat Ajar</a></li>
+          <li><a href='/search/label/HOTS' style='color: inherit;'>Bank Soal</a></li>
+          <li><a href='/search/label/EdTech' style='color: inherit;'>EdTech</a></li>
+          <li><a href='/p/about.html' style='color: inherit;'>Tentang Developer</a></li>
+       </ul>
+    </div>
+  </div>
+  <div style='margin-top: 80px; text-align: center; font-size: 11px; color: #94a3b8; border-top: 1px solid #f1f5f9; padding-top: 30px;'>
+     Copyright &#169; <script>document.write(new Date().getFullYear())</script> Catatan Guru IPS &#8212; Majukan Pendidikan Indonesia
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,653 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html b:css='false' b:defaultwidgetversion='2' b:layoutsVersion='3' b:responsive='true' b:templateVersion='1.0.0' expr:dir='data:blog.languageDirection' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+  <meta charset='UTF-8'/>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
+  <meta content='IE=edge' http-equiv='X-UA-Compatible'/>
+  
+  <b:if cond='data:view.isPost'>
+    <b:loop values='data:posts' var='post'>
+      <title><data:post.title/> &#8212; <data:blog.title/></title>
+      <meta expr:content='data:post.snippet' name='description'/>
+    </b:loop>
+  <b:elseif cond='data:view.isPage'/>
+    <b:loop values='data:posts' var='post'>
+      <title><data:post.title/> &#8212; <data:blog.title/></title>
+    </b:loop>
+  <b:else/>
+    <title><data:blog.pageTitle/></title>
+    <meta expr:content='data:blog.metaDescription' name='description'/>
+  </b:if>
+
+  <link expr:href='data:view.url' rel='canonical'/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Plus Jakarta Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <b:skin><![CDATA[
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; color: #0f172a; overflow-x: hidden; }
+    .glass-morphism { background: rgba(255,255,255,0.8); backdrop-filter: blur(16px); }
+    .text-gradient { background: linear-gradient(to right, #0891b2, #6366f1, #e11d48); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .bg-gradient-brand { background: linear-gradient(135deg, #0891b2 0%, #4f46e5 100%); }
+    .widget { outline: none; margin: 0; }
+    .section, .widget, .widget-content { margin: 0; padding: 0; }
+  ]]></b:skin>
+</head>
+<body class="bg-slate-50 min-h-screen selection:bg-cyan-100">
+  <!-- Progress Bar (Fake Spring for visual) -->
+  <div class="fixed top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-cyan-600 via-indigo-600 to-rose-600 z-[60] origin-left w-full transition-all"></div>
+
+  <!-- NAV -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-6 bg-transparent py-6">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3 group cursor-pointer">
+        <div class="w-10 h-10 bg-gradient-to-br from-cyan-600 to-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-cyan-500/20 group-hover:rotate-12 transition-transform">
+          <i data-lucide="graduation-cap"></i>
+        </div>
+        <div class="hidden sm:block">
+          <h1 class="text-lg font-black tracking-tighter text-slate-900 leading-none uppercase">CATATAN GURU IPS</h1>
+          <p class="text-[10px] text-cyan-600 font-bold tracking-[0.2em] uppercase opacity-80">Futuristic Education</p>
+        </div>
+      </a>
+
+      <div class="hidden lg:flex items-center gap-2">
+        <a href="/" class="px-4 py-2 text-sm font-bold transition-all relative group text-slate-900">
+          Beranda
+          <span class="absolute bottom-0 left-4 right-4 h-0.5 bg-cyan-600 rounded-full"></span>
+        </a>
+        <a href="/search/label/Perangkat" class="px-4 py-2 text-sm font-bold transition-all relative group text-slate-600 hover:text-slate-900">Perangkat</a>
+        <a href="/search/label/Bank%20Soal" class="px-4 py-2 text-sm font-bold transition-all relative group text-slate-600 hover:text-slate-900">Bank Soal</a>
+        <a href="/search/label/Edtech" class="px-4 py-2 text-sm font-bold transition-all relative group text-slate-600 hover:text-slate-900">Edtech</a>
+        <a href="/p/about.html" class="px-4 py-2 text-sm font-bold transition-all relative group text-slate-600 hover:text-slate-900">Tentang</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <form action="/search" class="hidden sm:flex items-center bg-slate-100 border border-slate-200 rounded-xl px-3 py-1.5 focus-within:border-cyan-400/50 transition-colors">
+          <i data-lucide="search" class="w-4 h-4 text-slate-500"></i>
+          <input name="q" type="text" placeholder="Cari materi..." class="bg-transparent border-none outline-none text-xs px-2 w-32 focus:w-48 transition-all text-slate-900" />
+        </form>
+        <button class="w-10 h-10 flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition-colors">
+          <i data-lucide="sun" class="w-5 h-5"></i>
+        </button>
+        <button class="lg:hidden w-10 h-10 flex items-center justify-center text-slate-600 hover:text-slate-900 bg-slate-100 rounded-xl">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HOME ONLY CONTENT -->
+  <b:if cond='data:view.isHomepage'>
+    <!-- HERO -->
+    <section class="relative pt-48 pb-32 overflow-hidden">
+      <div class="absolute top-20 left-1/4 w-[500px] h-[500px] bg-cyan-600/5 rounded-full blur-[120px] pointer-events-none"></div>
+      <div class="absolute bottom-20 right-1/4 w-[400px] h-[400px] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+      <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-cyan-700 text-xs font-black uppercase tracking-widest mb-8">
+            <i data-lucide="sparkles" class="w-3 h-3 animate-pulse"></i>
+            Empowering Modern Teachers
+          </div>
+          <h1 class="text-4xl sm:text-6xl lg:text-8xl font-display font-black text-slate-900 leading-[0.95] mb-8 tracking-tighter">
+            Digital <span class="bg-gradient-to-r from-cyan-600 via-indigo-600 to-rose-600 bg-clip-text text-transparent">Resources</span> for Social Science.
+          </h1>
+          <p class="text-xl text-slate-600 max-w-lg mb-10 leading-relaxed font-medium">
+            Platform futuristik untuk guru IPS: menyederhanakan administrasi dengan AI dan memaksimalkan potensi siswa Generasi Z.
+          </p>
+          <div class="flex flex-wrap gap-5">
+            <a href="/search/label/Edtech" class="group px-8 py-4 bg-gradient-to-r from-cyan-600 to-indigo-600 text-white font-black rounded-2xl shadow-xl shadow-cyan-600/20 hover:scale-[1.05] active:scale-95 transition-all flex items-center gap-3">
+              Jelajahi Tools <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+            </a>
+            <a href="/search/label/Perangkat" class="px-8 py-4 bg-white text-slate-900 font-black rounded-2xl border border-slate-200 hover:border-slate-300 transition-all shadow-sm">
+              Materi Gratis
+            </a>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="relative z-10 p-6 bg-white border border-slate-200 rounded-[48px] rotate-2 hover:rotate-0 transition-transform duration-700 shadow-2xl">
+            <div class="aspect-square bg-slate-50 rounded-[36px] overflow-hidden relative group border border-slate-100">
+              <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1200&amp;auto=format&amp;fit=crop&amp;q=80" alt="Teacher with AI" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"/>
+              <div class="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent"></div>
+              <div class="absolute bottom-8 left-8 right-8">
+                <div class="p-6 rounded-3xl bg-white/90 backdrop-blur-md border border-slate-200 shadow-xl">
+                  <div class="flex items-center gap-3 mb-2">
+                    <span class="p-2 rounded-xl bg-cyan-600/10 text-cyan-600"><i data-lucide="sparkles" class="w-4 h-4"></i></span>
+                    <h4 class="font-black text-slate-900 text-sm uppercase tracking-wider">AI Teaching Assistant</h4>
+                  </div>
+                  <p class="text-xs text-slate-600">Generate RPP dan Bank Soal dalam sekejap.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="absolute -top-10 -right-10 z-20 p-5 rounded-2xl bg-white border border-slate-200 shadow-2xl animate-bounce" style="animation-duration: 3s">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-600 to-indigo-600 flex items-center justify-center text-white font-bold text-xs shadow-lg">A+</div>
+              <div>
+                <p class="text-[10px] text-slate-400 font-black uppercase">Trending Materi</p>
+                <p class="text-xs text-slate-900 font-bold">Modul Ajar Fase D</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TOOLS OVERVIEW -->
+    <section class="py-32 max-w-7xl mx-auto px-6">
+      <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-10 mb-20">
+        <div>
+          <h2 class="text-5xl font-display font-black text-slate-900 tracking-tighter">Smart <span class="bg-gradient-to-r from-cyan-600 to-indigo-600 bg-clip-text text-transparent">EdTech Assistant.</span></h2>
+          <p class="text-slate-500 mt-4 text-xl font-medium">Alat digital tercanggih untuk mendukung produktivitas Guru IPS modern.</p>
+        </div>
+        <a href="/search/label/Edtech" class="px-8 py-4 bg-white border border-slate-200 rounded-2xl text-slate-900 font-bold hover:bg-slate-50 transition-all flex items-center gap-2 shadow-sm w-fit">
+          Buka Semua Tools <i data-lucide="chevron-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="group p-10 rounded-[40px] transition-all cursor-pointer relative overflow-hidden bg-gradient-to-br from-cyan-600 to-indigo-600 shadow-2xl shadow-cyan-600/20 hover:-translate-y-2">
+          <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-8 transition-all duration-500 shadow-md bg-white/20 text-white">
+            <i data-lucide="wand-2" class="w-8 h-8"></i>
+          </div>
+          <h3 class="text-2xl font-black mb-4 tracking-tight text-white">RPP AI Ultimate</h3>
+          <p class="text-sm leading-relaxed mb-8 font-medium text-white/80">Generate Modul Ajar Kurikulum Merdeka otomatis berbasis CP terbaru dalam hitungan detik.</p>
+          <a href="/search/label/Perangkat" class="flex items-center gap-2 text-sm font-black uppercase tracking-wider text-white">
+            Get Started <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-2 transition-transform"></i>
+          </a>
+        </div>
+
+        <div class="group p-10 rounded-[40px] border border-slate-200 transition-all cursor-pointer relative overflow-hidden bg-white hover:border-cyan-600 shadow-sm hover:-translate-y-2">
+          <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-8 transition-all duration-500 shadow-md bg-cyan-600/5 text-cyan-600 group-hover:bg-cyan-600 group-hover:text-white">
+            <i data-lucide="brain" class="w-8 h-8"></i>
+          </div>
+          <h3 class="text-2xl font-black mb-4 tracking-tight text-slate-900">Bank Soal HOTS</h3>
+          <p class="text-sm leading-relaxed mb-8 font-medium text-slate-600">Koleksi ribuan soal C4-C6 bidang IPS untuk melatih nalar kritis siswa secara komprehensif.</p>
+          <a href="/search/label/Bank%20Soal" class="flex items-center gap-2 text-sm font-black uppercase tracking-wider text-cyan-600">
+            Get Started <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-2 transition-transform"></i>
+          </a>
+        </div>
+
+        <div class="group p-10 rounded-[40px] border border-slate-200 transition-all cursor-pointer relative overflow-hidden bg-white hover:border-cyan-600 shadow-sm hover:-translate-y-2">
+          <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-8 transition-all duration-500 shadow-md bg-cyan-600/5 text-cyan-600 group-hover:bg-cyan-600 group-hover:text-white">
+            <i data-lucide="laptop" class="w-8 h-8"></i>
+          </div>
+          <h3 class="text-2xl font-black mb-4 tracking-tight text-slate-900">Simulasi CBT</h3>
+          <p class="text-sm leading-relaxed mb-8 font-medium text-slate-600">Platform ujian online yang ringan, anti-nyontek, dan mendukung analisis butir soal otomatis.</p>
+          <a href="/search/label/Edtech" class="flex items-center gap-2 text-sm font-black uppercase tracking-wider text-cyan-600">
+            Get Started <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-2 transition-transform"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKD SECTION -->
+    <section class="py-32 bg-white relative overflow-hidden border-y border-slate-100">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-24">
+          <span class="px-5 py-2 rounded-full bg-cyan-600/5 border border-cyan-600/10 text-cyan-700 text-[10px] font-black uppercase tracking-[0.4em] mb-6 inline-block">Career Accelerator</span>
+          <h2 class="text-5xl lg:text-7xl font-display font-black text-slate-900 mb-6 tracking-tighter leading-none">Mastering <span class="bg-gradient-to-r from-cyan-600 to-indigo-600 bg-clip-text text-transparent">SKD CAT.</span></h2>
+          <p class="text-slate-600 max-w-3xl mx-auto text-lg font-medium">Persiapan intensif taklukkan Seleksi Kompetensi Dasar CPNS dengan sistem simulasi interaktif.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-3 gap-10">
+          <div class="p-10 rounded-[48px] bg-slate-50 border border-slate-100 hover:border-cyan-600/30 transition-all group shadow-sm">
+            <div class="w-20 h-20 rounded-3xl bg-gradient-to-br from-cyan-600 to-cyan-500 flex items-center justify-center text-white mb-8 shadow-xl">
+              <i data-lucide="trophy" class="w-10 h-10"></i>
+            </div>
+            <h3 class="text-3xl font-black text-slate-900 mb-2">TWK</h3>
+            <p class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-6">Tes Wawasan Kebangsaan</p>
+            <p class="text-slate-600 text-sm mb-10 leading-relaxed font-medium h-20">Pemahaman nilai kebangsaan, Pancasila, UUD 1945, dan integritas.</p>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="p-4 rounded-2xl bg-white text-center border border-slate-200"><div class="text-sm font-black text-slate-900">30 Soal</div></div>
+              <div class="p-4 rounded-2xl bg-white text-center border border-slate-200"><div class="text-sm font-black text-slate-900">20 Menit</div></div>
+            </div>
+          </div>
+          <div class="p-10 rounded-[48px] bg-slate-50 border border-slate-100 hover:border-cyan-600/30 transition-all group shadow-sm">
+            <div class="w-20 h-20 rounded-3xl bg-gradient-to-br from-indigo-600 to-indigo-500 flex items-center justify-center text-white mb-8 shadow-xl">
+              <i data-lucide="brain" class="w-10 h-10"></i>
+            </div>
+            <h3 class="text-3xl font-black text-slate-900 mb-2">TIU</h3>
+            <p class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-6">Tes Intelegensi Umum</p>
+            <p class="text-slate-600 text-sm mb-10 leading-relaxed font-medium h-20">Penalaran logis, analitik, numerik, dan pemecahan masalah.</p>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="p-4 rounded-2xl bg-white text-center border border-slate-200"><div class="text-sm font-black text-slate-900">35 Soal</div></div>
+              <div class="p-4 rounded-2xl bg-white text-center border border-slate-200"><div class="text-sm font-black text-slate-900">30 Menit</div></div>
+            </div>
+          </div>
+          <div class="p-10 rounded-[48px] bg-slate-50 border border-slate-100 hover:border-cyan-600/30 transition-all group shadow-sm">
+            <div class="w-20 h-20 rounded-3xl bg-gradient-to-br from-rose-600 to-rose-500 flex items-center justify-center text-white mb-8 shadow-xl">
+              <i data-lucide="user" class="w-10 h-10"></i>
+            </div>
+            <h3 class="text-3xl font-black text-slate-900 mb-2">TKP</h3>
+            <p class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-6">Tes Karakteristik Pribadi</p>
+            <p class="text-slate-600 text-sm mb-10 leading-relaxed font-medium h-20">Integritas, etika, semangat kerja, dan pelayanan publik.</p>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="p-4 rounded-2xl bg-white text-center border border-slate-200"><div class="text-sm font-black text-slate-900">45 Soal</div></div>
+              <div class="p-4 rounded-2xl bg-white text-center border border-slate-200"><div class="text-sm font-black text-slate-900">35 Menit</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI CURATED -->
+    <section class="py-24 bg-white rounded-[60px] mx-6 -mt-10 mb-32 relative overflow-hidden shadow-2xl shadow-slate-200/60 border border-slate-100">
+      <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-cyan-600/5 rounded-full blur-[120px] -mr-64 -mt-64"></div>
+      <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-600/5 rounded-full blur-[120px] -ml-64 -mb-64"></div>
+
+      <div class="max-w-7xl mx-auto px-10 relative z-10">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
+          <div>
+            <div class="flex items-center gap-3 mb-4">
+              <div class="p-2 rounded-lg bg-cyan-100 text-cyan-600 border border-cyan-200">
+                <i data-lucide="sparkles" class="w-5 h-5"></i>
+              </div>
+              <span class="text-[10px] font-black tracking-[0.4em] text-cyan-600 uppercase">AI CURATED FEED</span>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter leading-tight">
+              Berita &amp; <span class="bg-gradient-to-r from-cyan-600 to-indigo-600 bg-clip-text text-transparent">Referensi AI.</span>
+            </h2>
+            <p class="text-slate-500 mt-4 max-w-xl font-medium">Informasi terkini dari jagat digital yang diproses secara cerdas untuk wawasan Anda hari ini.</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <span class="flex items-center gap-2 px-4 py-2 bg-slate-50 rounded-xl border border-slate-100 text-[10px] font-black text-slate-400 uppercase tracking-widest">
+              <div class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div> Streaming Aktif
+            </span>
+          </div>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="group p-8 bg-white rounded-[40px] border border-slate-100 hover:border-cyan-500/30 hover:shadow-xl transition-all flex flex-col h-full shadow-sm">
+            <div class="flex items-center justify-between mb-6">
+              <span class="px-3 py-1 bg-cyan-50 text-cyan-600 text-[9px] font-black uppercase tracking-widest rounded-lg border border-cyan-100">AI IN EDUCATION</span>
+              <span class="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">HARI INI</span>
+            </div>
+            <h3 class="text-xl font-black text-slate-900 mb-4 line-clamp-2 leading-tight group-hover:text-cyan-600 transition-colors">Perkembangan Gemini 1.5 dalam Analisis Data Kelas</h3>
+            <p class="text-slate-500 text-sm font-medium leading-relaxed mb-8 line-clamp-3 opacity-80 group-hover:opacity-100 transition-opacity">Gemini 1.5 Pro kini bisa memproses ribuan lembar jawaban siswa dan memberikan insight personal dalam hitungan detik...</p>
+            <div class="mt-auto pt-6 border-t border-slate-100 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 shadow-inner border border-slate-100"><i data-lucide="user" class="w-3 h-3"></i></div>
+                <span class="text-[10px] font-black text-slate-500 uppercase">AI SYSTEM</span>
+              </div>
+              <a href="#" class="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-slate-400 hover:bg-cyan-600 hover:text-white transition-all shadow-sm"><i data-lucide="external-link" class="w-4 h-4"></i></a>
+            </div>
+          </div>
+          
+          <div class="group p-8 bg-white rounded-[40px] border border-slate-100 hover:border-cyan-500/30 hover:shadow-xl transition-all flex flex-col h-full shadow-sm">
+            <div class="flex items-center justify-between mb-6">
+              <span class="px-3 py-1 bg-cyan-50 text-cyan-600 text-[9px] font-black uppercase tracking-widest rounded-lg border border-cyan-100">EDTECH TRENDS</span>
+              <span class="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">KEMARIN</span>
+            </div>
+            <h3 class="text-xl font-black text-slate-900 mb-4 line-clamp-2 leading-tight group-hover:text-cyan-600 transition-colors">Inovasi Pembelajaran IPS via Realitas Tertambah (AR)</h3>
+            <p class="text-slate-500 text-sm font-medium leading-relaxed mb-8 line-clamp-3 opacity-80 group-hover:opacity-100 transition-opacity">Siswa bisa melihat langsung peta sejarah secara 3D di meja mereka. Tren AR mendominasi pembelajaran geografi...</p>
+            <div class="mt-auto pt-6 border-t border-slate-100 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 shadow-inner border border-slate-100"><i data-lucide="user" class="w-3 h-3"></i></div>
+                <span class="text-[10px] font-black text-slate-500 uppercase">AI SYSTEM</span>
+              </div>
+              <a href="#" class="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-slate-400 hover:bg-cyan-600 hover:text-white transition-all shadow-sm"><i data-lucide="external-link" class="w-4 h-4"></i></a>
+            </div>
+          </div>
+          
+          <div class="group p-8 bg-white rounded-[40px] border border-slate-100 hover:border-cyan-500/30 hover:shadow-xl transition-all flex flex-col h-full shadow-sm">
+            <div class="flex items-center justify-between mb-6">
+              <span class="px-3 py-1 bg-cyan-50 text-cyan-600 text-[9px] font-black uppercase tracking-widest rounded-lg border border-cyan-100">TIPS MENGAJAR</span>
+              <span class="text-[9px] font-bold text-slate-400 uppercase tracking-tighter">2 HARI LALU</span>
+            </div>
+            <h3 class="text-xl font-black text-slate-900 mb-4 line-clamp-2 leading-tight group-hover:text-cyan-600 transition-colors">Prompt Engineering Khusus untuk RPP Kurikulum Merdeka</h3>
+            <p class="text-slate-500 text-sm font-medium leading-relaxed mb-8 line-clamp-3 opacity-80 group-hover:opacity-100 transition-opacity">Cara menyusun prompt ChatGPT agar RPP yang dihasilkan selalu sesuai dengan dimensi Profil Pelajar Pancasila...</p>
+            <div class="mt-auto pt-6 border-t border-slate-100 flex items-center justify-between">
+              <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-full bg-slate-50 flex items-center justify-center text-slate-400 shadow-inner border border-slate-100"><i data-lucide="user" class="w-3 h-3"></i></div>
+                <span class="text-[10px] font-black text-slate-500 uppercase">AI SYSTEM</span>
+              </div>
+              <a href="#" class="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-slate-400 hover:bg-cyan-600 hover:text-white transition-all shadow-sm"><i data-lucide="external-link" class="w-4 h-4"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </b:if>
+
+  <!-- MAIN BLOG FEED -->
+  <section class="max-w-7xl mx-auto px-6 pb-40" id="blog-content">
+    <b:if cond='!data:view.isHomepage'>
+      <b:if cond='data:view.isPost == false and data:view.isPage == false'>
+        <div class="text-center pt-40 mb-24">
+          <h2 class="text-5xl font-display font-black text-slate-900 tracking-tighter">Arsip <span class="bg-gradient-to-r from-rose-600 to-indigo-600 bg-clip-text text-transparent">Materi.</span></h2>
+          <p class="text-slate-500 mt-4 font-medium"><data:view.description/></p>
+        </div>
+      </b:if>
+    </b:if>
+
+    <b:if cond='data:view.isHomepage'>
+      <div class="text-center mb-24">
+        <h2 class="text-5xl font-display font-black text-slate-900 tracking-tighter">Latest <span class="bg-gradient-to-r from-rose-600 to-indigo-600 bg-clip-text text-transparent">Insights.</span></h2>
+        <p class="text-slate-500 mt-4 font-medium">Materi IPS, update CPNS, dan tips EdTech terbaru.</p>
+      </div>
+    </b:if>
+
+    <b:section class="main-content" id="main" showaddelement="yes">
+      <b:widget id="Blog1" locked="true" title="Postingan" type="Blog" version="2" visible="true">
+        <b:includable id="main" var="this">
+          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+            <b:loop values="data:posts" var="post">
+              <b:if cond="data:view.isMultipleItems">
+                <article class="group cursor-pointer flex flex-col h-full relative p-6 bg-white rounded-[40px] shadow-sm border border-slate-100 hover:shadow-xl hover:-translate-y-2 transition-all">
+                  <b:if cond="data:post.featuredImage">
+                    <a expr:href="data:post.url" class="aspect-[16/10] bg-slate-200 rounded-[24px] overflow-hidden mb-8 block relative group/img">
+                      <img expr:src="data:post.featuredImage" class="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-1000"/>
+                    </a>
+                  </b:if>
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    <b:if cond="data:post.labels">
+                      <b:loop values="data:post.labels" var="label">
+                        <span class="px-2.5 py-1 bg-slate-100 text-slate-500 text-[8px] font-black uppercase tracking-wider rounded-lg">#<data:label.name/></span>
+                      </b:loop>
+                    </b:if>
+                  </div>
+                  <h3 class="text-2xl font-black text-slate-900 leading-tight mb-4 group-hover:text-cyan-600 transition-colors line-clamp-2">
+                    <a expr:href="data:post.url"><data:post.title/></a>
+                  </h3>
+                  <div class="flex flex-wrap items-center gap-y-4 gap-x-8 text-[9px] font-black text-slate-400 uppercase tracking-[0.15em] border-t border-slate-100 pt-6 mt-auto">
+                    <div class="flex items-center gap-2">
+                      <i data-lucide="calendar" class="w-4 h-4 text-cyan-600"></i> <data:post.date.iso8601/>
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <i data-lucide="user" class="w-4 h-4 text-cyan-600"></i> <data:post.author.name/>
+                    </div>
+                  </div>
+                </article>
+              <b:else/>
+                <b:if cond='data:view.isPage'>
+                  <!-- ABOUT & STATIC PAGE VIEW -->
+                  <div class="col-span-1 md:col-span-2 lg:col-span-3">
+                    <div class="pt-40 pb-32 max-w-5xl mx-auto px-6">
+                      <div class="grid lg:grid-cols-12 gap-16 items-start">
+                        <div class="lg:col-span-5 sticky top-40">
+                          <div class="relative">
+                            <div class="aspect-[3/4] rounded-[60px] overflow-hidden border-8 border-white shadow-2xl skew-y-3 hover:skew-y-0 transition-transform duration-700">
+                              <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg_xGA0vAhTybTMbkeCIRPHa3sf6ZinpuauCEY9ebkdN5cwa8YPm_tViBEbDa_Tmk-lKqPwh33qr3fXKexhVsJ4lxervAZkUxlNBXVay66rmxxB7cpgRU7Z7wMJ0ccZD8lTSrduMJRLsdLriNo3qbpKVHBAG5vRxLsXC5nYwsWJx2sJRI_VwSei_ns_xeVI/s16000/Gemini_Generated_Image_2m7j2t2m7j2t2m7j.png" alt="Catur Pamungkas" class="w-full h-full object-cover"/>
+                            </div>
+                            <div class="absolute -bottom-10 -right-10 bg-gradient-to-br from-cyan-600 to-indigo-600 p-8 rounded-[40px] text-white shadow-2xl max-w-[240px]">
+                              <p class="text-[10px] font-black uppercase tracking-[0.3em] opacity-80 mb-2">Motto Hidup</p>
+                              <h4 class="text-xl font-display font-black leading-tight italic">&quot;Educate, Empowering, Social and Nature.&quot;</h4>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="lg:col-span-7">
+                          <span class="text-[10px] font-black uppercase tracking-[0.5em] text-cyan-600 mb-6 block">Personal Branding</span>
+                          <h1 class="text-5xl md:text-7xl font-display font-black text-slate-900 tracking-tighter mb-8 leading-[0.9]">
+                            Catur <span class="bg-gradient-to-r from-cyan-600 via-indigo-600 to-rose-600 bg-clip-text text-transparent">Pamungkas.</span>
+                          </h1>
+                          
+                          <div class="flex flex-wrap gap-3 mb-12">
+                            <span class="px-4 py-2 bg-slate-100 border border-slate-200 rounded-2xl text-[10px] font-black text-slate-600 uppercase tracking-widest">Social Science Educator</span>
+                            <span class="px-4 py-2 bg-slate-100 border border-slate-200 rounded-2xl text-[10px] font-black text-slate-600 uppercase tracking-widest">EdTech Enthusiast</span>
+                            <span class="px-4 py-2 bg-slate-100 border border-slate-200 rounded-2xl text-[10px] font-black text-slate-600 uppercase tracking-widest">Tentor Freelance</span>
+                            <span class="px-4 py-2 bg-slate-100 border border-slate-200 rounded-2xl text-[10px] font-black text-slate-600 uppercase tracking-widest">CPNS Mentor</span>
+                          </div>
+
+                          <div class="space-y-8 text-slate-600 font-medium leading-relaxed mb-16 text-lg">
+                            <p>
+                              Halo, saya <strong>Catur Pamungkas</strong>. Saya adalah seorang guru yang kebetulan punya minat besar di bidang teknologi pembelajaran, khususnya Ilmu Pengetahuan Sosial (IPS). Sampai hari ini, saya masih terus belajar bagaimana menjadi pendidik yang baik bagi anak-anak.
+                            </p>
+                            <p>
+                              Saya memulai langkah sebagai guru pada tahun <strong>2017</strong>. Dari pengalaman selama ini, saya belajar bahwa secanggih apa pun teknologi yang kita pakai di kelas, hal yang paling penting tetaplah hubungan baik dan perhatian tulus kita kepada setiap siswa.
+                            </p>
+                            <p>
+                              Saat ini, saya juga sehari-hari aktif di <strong>MGMP IPS SMP Kabupaten Kebumen</strong>. Di sana, saya senang bisa duduk bareng dan berbagi pengalaman dengan teman-teman guru lainnya. Bukan karena saya merasa paling tahu, tapi karena saya percaya bahwa dengan saling berbagi, kita bisa tumbuh bersama.
+                            </p>
+                            <p>
+                              Konsep <em class="text-slate-900">&quot;Educate, Empowering, Social and Nature&quot;</em> bagi saya adalah pengingat sederhana. Mendidik itu bukan cuma soal nilai, tapi soal memberdayakan potensi siswa, menjaga kepedulian sosial, dan tidak lupa mencintai alam sekitar kita.
+                            </p>
+                          </div>
+
+                          <div class="p-10 bg-slate-50 rounded-[48px] border border-slate-100 shadow-sm mb-16">
+                            <h4 class="text-xl font-black text-slate-900 mb-6 tracking-tight">Terhubung dengan Saya</h4>
+                            <div class="grid grid-cols-2 sm:grid-cols-3 gap-6">
+                              <a href="https://facebook.com/pamungkas.toer" target="_blank" class="flex items-center gap-3 text-sm font-bold text-slate-500 hover:text-blue-600 transition-colors group">
+                                <div class="p-3 bg-white rounded-2xl shadow-sm border border-slate-200 group-hover:border-current transition-colors"><i data-lucide="facebook" class="w-5 h-5"></i></div>
+                                Facebook
+                              </a>
+                              <a href="https://x.com/@kangtoer" target="_blank" class="flex items-center gap-3 text-sm font-bold text-slate-500 hover:text-sky-500 transition-colors group">
+                                <div class="p-3 bg-white rounded-2xl shadow-sm border border-slate-200 group-hover:border-current transition-colors"><i data-lucide="twitter" class="w-5 h-5"></i></div>
+                                Twitter
+                              </a>
+                              <a href="https://instagram.com/kangtoer" target="_blank" class="flex items-center gap-3 text-sm font-bold text-slate-500 hover:text-pink-600 transition-colors group">
+                                <div class="p-3 bg-white rounded-2xl shadow-sm border border-slate-200 group-hover:border-current transition-colors"><i data-lucide="instagram" class="w-5 h-5"></i></div>
+                                Instagram
+                              </a>
+                              <a href="https://www.youtube.com/@KangToer" target="_blank" class="flex items-center gap-3 text-sm font-bold text-slate-500 hover:text-red-600 transition-colors group">
+                                <div class="p-3 bg-white rounded-2xl shadow-sm border border-slate-200 group-hover:border-current transition-colors"><i data-lucide="youtube" class="w-5 h-5"></i></div>
+                                YouTube
+                              </a>
+                              <a href="https://threads.net/@kangtoer" target="_blank" class="flex items-center gap-3 text-sm font-bold text-slate-500 hover:text-slate-900 transition-colors group">
+                                <div class="p-3 bg-white rounded-2xl shadow-sm border border-slate-200 group-hover:border-current transition-colors"><i data-lucide="hash" class="w-5 h-5"></i></div>
+                                Threads
+                              </a>
+                              <a href="https://whatsapp.com/channel/0029Vb6R2Ny2v1J1dll5Mq27" target="_blank" class="flex items-center gap-3 text-sm font-bold text-slate-500 hover:text-green-600 transition-colors group">
+                                <div class="p-3 bg-white rounded-2xl shadow-sm border border-slate-200 group-hover:border-current transition-colors"><i data-lucide="message-circle" class="w-5 h-5"></i></div>
+                                WhatsApp
+                              </a>
+                            </div>
+                          </div>
+
+                          <div class="flex items-center gap-6 mb-16">
+                            <div class="flex flex-col">
+                              <span class="text-3xl font-black text-slate-900 leading-none">2017</span>
+                              <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2">Mengabdi Sejak</span>
+                            </div>
+                            <div class="w-[1px] h-12 bg-slate-200"></div>
+                            <div class="flex flex-col">
+                              <span class="text-3xl font-black text-slate-900 leading-none">Kab. Kebumen</span>
+                              <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2">Home Base</span>
+                            </div>
+                          </div>
+                          
+                          <!-- Page Body if edited via Blogger Dashboard -->
+                          <div class="prose prose-slate prose-lg max-w-none text-slate-600">
+                             <data:post.body/>
+                          </div>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <b:else/>
+                  <!-- SINGLE POST VIEW -->
+                  <div class="col-span-1 md:col-span-2 lg:col-span-3">
+                  <div class="pt-40 pb-32 max-w-4xl mx-auto px-6 bg-white rounded-[40px] shadow-sm border border-slate-100 p-8 md:p-16 mb-20 mt-10 relative">
+                    <a href="/" class="mb-8 inline-flex items-center gap-2 text-slate-500 hover:text-cyan-600 font-black uppercase text-xs tracking-widest transition-colors group">
+                      <div class="p-2 rounded-xl bg-white border border-slate-200 group-hover:border-cyan-600 transition-colors">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                      </div>
+                      Kembali ke Beranda
+                    </a>
+
+                    <b:if cond="data:post.featuredImage">
+                      <div class="aspect-video md:aspect-[21/9] rounded-[32px] md:rounded-[48px] overflow-hidden mb-8 md:mb-12 shadow-2xl border border-slate-100">
+                        <img expr:src="data:post.featuredImage" class="w-full h-full object-cover"/>
+                      </div>
+                    </b:if>
+
+                    <div class="flex flex-wrap items-center gap-3 md:gap-6 mb-6 md:mb-8">
+                      <b:if cond="data:post.labels">
+                        <b:loop values="data:post.labels" var="label">
+                          <span class="px-3 py-1 md:px-4 md:py-1.5 bg-cyan-600/10 text-cyan-700 text-[10px] font-black uppercase tracking-widest rounded-full"><data:label.name/></span>
+                        </b:loop>
+                      </b:if>
+                      <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest flex items-center gap-2">
+                        <i data-lucide="calendar" class="w-3 h-3 text-cyan-600"></i> <data:post.date.iso8601/>
+                      </span>
+                      <span class="text-[10px] text-slate-400 font-bold uppercase tracking-widest flex items-center gap-2">
+                        <i data-lucide="user" class="w-3 h-3 text-cyan-600"></i> <data:post.author.name/>
+                      </span>
+                    </div>
+
+                    <h1 class="text-4xl md:text-6xl font-display font-black text-slate-900 leading-[1.1] mb-8 md:mb-10 tracking-tighter">
+                      <data:post.title/>
+                    </h1>
+
+                    <div class="prose prose-slate prose-lg max-w-none text-slate-600 font-medium leading-loose mb-16 md:mb-20 space-y-6 md:space-y-8" id="post-body">
+                      <data:post.body/>
+                    </div>
+
+                    <!-- AUTHOR BIO -->
+                    <div class="mt-20 p-8 md:p-12 bg-white rounded-[40px] border border-slate-100 shadow-2xl relative overflow-hidden group">
+                      <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-600/5 rounded-bl-[100px] -mr-10 -mt-10 transition-transform group-hover:scale-110"></div>
+                      <div class="flex flex-col md:flex-row items-center gap-8 md:gap-10 relative z-10">
+                        <div class="w-24 h-24 md:w-32 md:h-32 rounded-full overflow-hidden shadow-sm border border-slate-100 transition-all duration-500 group-hover:shadow-md">
+                          <img expr:src="data:post.author.authorPhoto.url" class="w-full h-full object-cover"/>
+                        </div>
+                        <div class="flex-1 text-center md:text-left">
+                          <div class="mb-4">
+                            <span class="text-[10px] font-black uppercase tracking-[0.3em] text-cyan-600 mb-2 block">Penulis Artikel</span>
+                            <h3 class="text-3xl font-black text-slate-900 tracking-tighter mb-1"><data:post.author.name/></h3>
+                            <p class="text-sm font-bold text-slate-400 italic">Social Science Educator | EdTech Enthusiast</p>
+                          </div>
+                          <p class="text-slate-600 font-medium leading-relaxed mb-6 max-w-2xl"><data:post.author.aboutMe/></p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- COMMENTS BLOCK (If any) -->
+                    <div class="mt-20 pt-12 border-t border-slate-200">
+                      <div class="flex items-center gap-3 mb-10">
+                        <div class="p-3 rounded-2xl bg-cyan-600/5 text-cyan-600"><i data-lucide="message-square" class="w-6 h-6"></i></div>
+                        <h3 class="text-3xl font-black text-slate-900 tracking-tighter">Diskusi &amp; Komentar</h3>
+                      </div>
+                      <b:include data="post" name="comments" />
+                    </div>
+
+                  </div>
+                </div>
+                </b:if>
+              </b:if>
+            </b:loop>
+          </div>
+
+          <!-- Pagination -->
+          <b:if cond="data:view.isMultipleItems">
+            <div class="mt-20 flex justify-center gap-4">
+              <b:if cond="data:olderPageUrl">
+                <a expr:href="data:olderPageUrl" class="w-12 h-12 flex items-center justify-center rounded-2xl bg-white border border-slate-200 text-slate-600 hover:text-cyan-600 hover:border-cyan-600 transition-all shadow-sm">Older</a>
+              </b:if>
+              <b:if cond="data:newerPageUrl">
+               <a expr:href="data:newerPageUrl" class="w-12 h-12 flex items-center justify-center rounded-2xl bg-white border border-slate-200 text-slate-600 hover:text-cyan-600 hover:border-cyan-600 transition-all shadow-sm">Newer</a>
+              </b:if>
+            </div>
+          </b:if>
+
+        </b:includable>
+        <!-- Retain core components -->
+        <b:includable id="comments" var="post">
+           <div class="comments" id="comments">
+             <a name="comments"></a>
+             <b:if cond="data:post.allowComments">
+               <div class="comments-content">
+                 <!-- Insert default threaded comments html here for blogger -->
+                 <data:post.commentHtml/>
+               </div>
+               <b:if cond='data:post.embedCommentForm'>
+                 <b:include data='post' name='threadedCommentForm'/>
+               </b:if>
+             </b:if>
+           </div>
+        </b:includable>
+        
+        <b:includable id='threadedCommentForm' var='post'>
+          <div class='comment-form p-6 bg-slate-50 border border-slate-100 rounded-3xl mt-12'>
+            <a name='comment-form'/>
+            <h4 class="font-black text-slate-900 mb-4"><data:messages.postAComment/></h4>
+            <a expr:href='data:post.commentFormIframeSrc' id='comment-editor-src'/>
+            <iframe allowtransparency='allowtransparency' class='blogger-iframe-colorize blogger-comment-from-post w-full min-h-[250px]' frameborder='0' id='comment-editor' name='comment-editor' src='' width='100%'/>
+          </div>
+        </b:includable>
+
+        <b:includable id="nextPageLink"></b:includable>
+        <b:includable id="previousPageLink"></b:includable>
+      </b:widget>
+    </b:section>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-white pt-32 pb-16 border-t border-slate-100 relative">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-4 gap-20 mb-24">
+        <div class="lg:col-span-2">
+           <div class="flex items-center gap-4 mb-8">
+            <div class="w-14 h-14 bg-gradient-to-br from-cyan-600 to-indigo-600 rounded-2xl flex items-center justify-center text-white shadow-xl">
+              <i data-lucide="graduation-cap" class="w-8 h-8"></i>
+            </div>
+            <div>
+              <h3 class="text-2xl font-black text-slate-900 tracking-tighter">CATATAN GURU IPS</h3>
+              <p class="text-[10px] text-cyan-600 font-black tracking-[0.4em] uppercase">Built for Future Educators</p>
+            </div>
+          </div>
+          <p class="text-slate-600 text-lg leading-relaxed mb-10 max-w-sm font-medium">
+            Pionir platform edukasi digital yang dikelola oleh pendidik untuk memajukan kualitas literasi guru di seluruh nusantara.
+          </p>
+          <div class="flex gap-4">
+            <a href="https://facebook.com/pamungkas.toer" target="_blank" class="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 hover:text-cyan-600 hover:bg-slate-100 transition-all"><i data-lucide="facebook"></i></a>
+            <a href="https://x.com/@kangtoer" target="_blank" class="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 hover:text-cyan-600 hover:bg-slate-100 transition-all"><i data-lucide="twitter"></i></a>
+            <a href="https://instagram.com/kangtoer" target="_blank" class="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 hover:text-cyan-600 hover:bg-slate-100 transition-all"><i data-lucide="instagram"></i></a>
+            <a href="https://www.youtube.com/@KangToer" target="_blank" class="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 hover:text-cyan-600 hover:bg-slate-100 transition-all"><i data-lucide="youtube"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-slate-900 font-black text-xs uppercase tracking-widest mb-8">Resources</h4>
+          <ul class="space-y-4 text-slate-600 font-bold text-sm">
+            <li><a href="/search/label/Perangkat" class="hover:text-cyan-600 transition-colors">Modul Ajar IPS</a></li>
+            <li><a href="/search/label/Bank%20Soal" class="hover:text-cyan-400 transition-colors">Bank Soal CPNS</a></li>
+            <li><a href="/search/label/Edtech" class="hover:text-cyan-400 transition-colors">EdTech Tutorial</a></li>
+            <li><a href="/p/about.html" class="hover:text-cyan-400 transition-colors">About Developer</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="pt-10 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-6">
+        <p class="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em] text-center">
+          &#169; <script>document.write(new Date().getFullYear())</script> Catatan Guru IPS &#8212; Majukan Pendidikan Indonesia
+        </p>
+        <button class="flex items-center gap-2 px-6 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 font-bold text-xs hover:bg-slate-100 transition-all">
+          <i data-lucide="github" class="w-4 h-4"></i> Source Documentation
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 20) {
+        nav.classList.add('bg-white/80', 'backdrop-blur-xl', 'border-b', 'py-3');
+        nav.classList.remove('bg-transparent', 'py-6');
+      } else {
+        nav.classList.remove('bg-white/80', 'backdrop-blur-xl', 'border-b', 'py-3');
+        nav.classList.add('bg-transparent', 'py-6');
+      }
+    });
+  </script>
+</body>
+</html>
