@@ -1,13 +1,286 @@
-<!doctype html>
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Google AI Studio App</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
+<head>
+  <meta charset='UTF-8'/>
+  <meta content='width=device-width, initial-scale=1.0' name='viewport'/>
+  <meta content='IE=edge' http-equiv='X-UA-Compatible'/>
+  
+  <title>Catatan Guru IPS - Platform Edukasi Digital</title>
+  <meta name='description' content='Platform futuristik untuk guru IPS: menyederhanakan administrasi dengan AI dan memaksimalkan potensi siswa Generasi Z.'/>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Plus Jakarta Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; color: #0f172a; overflow-x: hidden; }
+    .glass-morphism { background: rgba(255,255,255,0.8); backdrop-filter: blur(16px); }
+    .text-gradient { background: linear-gradient(to right, #0891b2, #6366f1, #e11d48); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .bg-gradient-brand { background: linear-gradient(135deg, #0891b2 0%, #4f46e5 100%); }
+  </style>
+</head>
+<body class="bg-slate-50 min-h-screen selection:bg-cyan-100">
+  <!-- Progress Bar -->
+  <div class="fixed top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-cyan-600 via-indigo-600 to-rose-600 z-[60] origin-left w-full transition-all"></div>
+
+  <!-- NAV -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-6 bg-transparent py-6">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3 group cursor-pointer">
+        <div class="w-10 h-10 bg-gradient-to-br from-cyan-600 to-indigo-600 rounded-xl flex items-center justify-center text-white shadow-lg shadow-cyan-500/20 group-hover:rotate-12 transition-transform">
+          <i data-lucide="graduation-cap"></i>
+        </div>
+        <div class="hidden sm:block">
+          <h1 class="text-lg font-black tracking-tighter text-slate-900 leading-none uppercase">CATATAN GURU IPS</h1>
+          <p class="text-[10px] text-cyan-600 font-bold tracking-[0.2em] uppercase opacity-80">Futuristic Education</p>
+        </div>
+      </a>
+
+      <div class="hidden lg:flex items-center gap-2">
+        <a href="/" class="px-4 py-2 text-sm font-bold transition-all relative group text-slate-900">
+          Beranda
+          <span class="absolute bottom-0 left-4 right-4 h-0.5 bg-cyan-600 rounded-full"></span>
+        </a>
+        <a href="#tools" class="px-4 py-2 text-sm font-bold transition-all relative group text-slate-600 hover:text-slate-900">Perangkat</a>
+        <a href="#skd" class="px-4 py-2 text-sm font-bold transition-all relative group text-slate-600 hover:text-slate-900">CPNS</a>
+        <a href="#about" class="px-4 py-2 text-sm font-bold transition-all relative group text-slate-600 hover:text-slate-900">Tentang</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button class="w-10 h-10 flex items-center justify-center text-slate-600 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition-colors">
+          <i data-lucide="sun" class="w-5 h-5"></i>
+        </button>
+        <button class="lg:hidden w-10 h-10 flex items-center justify-center text-slate-600 hover:text-slate-900 bg-slate-100 rounded-xl">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="relative pt-48 pb-32 overflow-hidden">
+    <div class="absolute top-20 left-1/4 w-[500px] h-[500px] bg-cyan-600/5 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute bottom-20 right-1/4 w-[400px] h-[400px] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none"></div>
+
+    <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-100 border border-slate-200 text-cyan-700 text-xs font-black uppercase tracking-widest mb-8">
+          <i data-lucide="sparkles" class="w-3 h-3 animate-pulse"></i>
+          Empowering Modern Teachers
+        </div>
+        <h1 class="text-4xl sm:text-6xl lg:text-8xl font-display font-black text-slate-900 leading-[0.95] mb-8 tracking-tighter">
+          Digital <span class="bg-gradient-to-r from-cyan-600 via-indigo-600 to-rose-600 bg-clip-text text-transparent">Resources</span> for Social Science.
+        </h1>
+        <p class="text-xl text-slate-600 max-w-lg mb-10 leading-relaxed font-medium">
+          Platform futuristik untuk guru IPS: menyederhanakan administrasi dengan AI dan memaksimalkan potensi siswa Generasi Z.
+        </p>
+        <div class="flex flex-wrap gap-5">
+          <a href="#tools" class="group px-8 py-4 bg-gradient-to-r from-cyan-600 to-indigo-600 text-white font-black rounded-2xl shadow-xl shadow-cyan-600/20 hover:scale-[1.05] active:scale-95 transition-all flex items-center gap-3">
+            Jelajahi Tools <i data-lucide="arrow-right" class="w-5 h-5 group-hover:translate-x-1 transition-transform"></i>
+          </a>
+          <a href="#resources" class="px-8 py-4 bg-white text-slate-900 font-black rounded-2xl border border-slate-200 hover:border-slate-300 transition-all shadow-sm">
+            Materi Gratis
+          </a>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="relative z-10 p-6 bg-white border border-slate-200 rounded-[48px] rotate-2 hover:rotate-0 transition-transform duration-700 shadow-2xl">
+          <div class="aspect-square bg-slate-50 rounded-[36px] overflow-hidden relative group border border-slate-100">
+            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=1200&auto=format&fit=crop&q=80" alt="Teacher with AI" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"/>
+            <div class="absolute inset-0 bg-gradient-to-t from-white/80 via-transparent to-transparent"></div>
+            <div class="absolute bottom-8 left-8 right-8">
+              <div class="p-6 rounded-3xl bg-white/90 backdrop-blur-md border border-slate-200 shadow-xl">
+                <div class="flex items-center gap-3 mb-2">
+                  <span class="p-2 rounded-xl bg-cyan-600/10 text-cyan-600"><i data-lucide="sparkles" class="w-4 h-4"></i></span>
+                  <h4 class="font-black text-slate-900 text-sm uppercase tracking-wider">AI Teaching Assistant</h4>
+                </div>
+                <p class="text-xs text-slate-600">Generate RPP dan Bank Soal dalam sekejap.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="absolute -top-10 -right-10 z-20 p-5 rounded-2xl bg-white border border-slate-200 shadow-2xl animate-bounce" style="animation-duration: 3s">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-cyan-600 to-indigo-600 flex items-center justify-center text-white font-bold text-xs shadow-lg">A+</div>
+            <div>
+              <p class="text-[10px] text-slate-400 font-black uppercase">Trending Materi</p>
+              <p class="text-xs text-slate-900 font-bold">Modul Ajar Fase D</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TOOLS OVERVIEW -->
+  <section id="tools" class="py-32 max-w-7xl mx-auto px-6">
+    <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-10 mb-20">
+      <div>
+        <h2 class="text-5xl font-display font-black text-slate-900 tracking-tighter">Smart <span class="bg-gradient-to-r from-cyan-600 to-indigo-600 bg-clip-text text-transparent">EdTech Assistant.</span></h2>
+        <p class="text-slate-500 mt-4 text-xl font-medium">Alat digital tercanggih untuk mendukung produktivitas Guru IPS modern.</p>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="group p-10 rounded-[40px] transition-all cursor-pointer relative overflow-hidden bg-gradient-to-br from-cyan-600 to-indigo-600 shadow-2xl shadow-cyan-600/20 hover:-translate-y-2">
+        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-8 transition-all duration-500 shadow-md bg-white/20 text-white">
+          <i data-lucide="wand-2" class="w-8 h-8"></i>
+        </div>
+        <h3 class="text-2xl font-black mb-4 tracking-tight text-white">RPP AI Ultimate</h3>
+        <p class="text-sm leading-relaxed mb-8 font-medium text-white/80">Generate Modul Ajar Kurikulum Merdeka otomatis berbasis CP terbaru dalam hitungan detik.</p>
+        <a href="#" class="flex items-center gap-2 text-sm font-black uppercase tracking-wider text-white">
+          Get Started <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-2 transition-transform"></i>
+        </a>
+      </div>
+
+      <div class="group p-10 rounded-[40px] border border-slate-200 transition-all cursor-pointer relative overflow-hidden bg-white hover:border-cyan-600 shadow-sm hover:-translate-y-2">
+        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-8 transition-all duration-500 shadow-md bg-cyan-600/5 text-cyan-600 group-hover:bg-cyan-600 group-hover:text-white">
+          <i data-lucide="brain" class="w-8 h-8"></i>
+        </div>
+        <h3 class="text-2xl font-black mb-4 tracking-tight text-slate-900">Bank Soal HOTS</h3>
+        <p class="text-sm leading-relaxed mb-8 font-medium text-slate-600">Koleksi ribuan soal C4-C6 bidang IPS untuk melatih nalar kritis siswa secara komprehensif.</p>
+        <a href="#" class="flex items-center gap-2 text-sm font-black uppercase tracking-wider text-cyan-600">
+          Get Started <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-2 transition-transform"></i>
+        </a>
+      </div>
+
+      <div class="group p-10 rounded-[40px] border border-slate-200 transition-all cursor-pointer relative overflow-hidden bg-white hover:border-cyan-600 shadow-sm hover:-translate-y-2">
+        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-8 transition-all duration-500 shadow-md bg-cyan-600/5 text-cyan-600 group-hover:bg-cyan-600 group-hover:text-white">
+          <i data-lucide="laptop" class="w-8 h-8"></i>
+        </div>
+        <h3 class="text-2xl font-black mb-4 tracking-tight text-slate-900">Simulasi CBT</h3>
+        <p class="text-sm leading-relaxed mb-8 font-medium text-slate-600">Platform ujian online yang ringan, anti-nyontek, dan mendukung analisis butir soal otomatis.</p>
+        <a href="#" class="flex items-center gap-2 text-sm font-black uppercase tracking-wider text-cyan-600">
+          Get Started <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-2 transition-transform"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKD SECTION -->
+  <section id="skd" class="py-32 bg-white relative overflow-hidden border-y border-slate-100">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-24">
+        <span class="px-5 py-2 rounded-full bg-cyan-600/5 border border-cyan-600/10 text-cyan-700 text-[10px] font-black uppercase tracking-[0.4em] mb-6 inline-block">Career Accelerator</span>
+        <h2 class="text-5xl lg:text-7xl font-display font-black text-slate-900 mb-6 tracking-tighter leading-none">Mastering <span class="bg-gradient-to-r from-cyan-600 to-indigo-600 bg-clip-text text-transparent">SKD CAT.</span></h2>
+        <p class="text-slate-600 max-w-3xl mx-auto text-lg font-medium">Persiapan intensif taklukkan Seleksi Kompetensi Dasar CPNS dengan sistem simulasi interaktif.</p>
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-10">
+        <div class="p-10 rounded-[48px] bg-slate-50 border border-slate-100 hover:border-cyan-600/30 transition-all group shadow-sm">
+          <div class="w-20 h-20 rounded-3xl bg-gradient-to-br from-cyan-600 to-cyan-500 flex items-center justify-center text-white mb-8 shadow-xl">
+            <i data-lucide="trophy" class="w-10 h-10"></i>
+          </div>
+          <h3 class="text-3xl font-black text-slate-900 mb-2">TWK</h3>
+          <p class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-6">Tes Wawasan Kebangsaan</p>
+          <p class="text-slate-600 text-sm mb-10 leading-relaxed font-medium">Pemahaman nilai kebangsaan, Pancasila, UUD 1945, dan integritas.</p>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="p-4 rounded-2xl bg-white text-center border border-slate-200"><div class="text-sm font-black text-slate-900">30 Soal</div></div>
+            <div class="p-4 rounded-2xl bg-white text-center border border-slate-200"><div class="text-sm font-black text-slate-900">20 Menit</div></div>
+          </div>
+        </div>
+        <div class="p-10 rounded-[48px] bg-slate-50 border border-slate-100 hover:border-cyan-600/30 transition-all group shadow-sm">
+          <div class="w-20 h-20 rounded-3xl bg-gradient-to-br from-indigo-600 to-indigo-500 flex items-center justify-center text-white mb-8 shadow-xl">
+            <i data-lucide="brain" class="w-10 h-10"></i>
+          </div>
+          <h3 class="text-3xl font-black text-slate-900 mb-2">TIU</h3>
+          <p class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-6">Tes Intelegensi Umum</p>
+          <p class="text-slate-600 text-sm mb-10 leading-relaxed font-medium">Penalaran logis, analitik, numerik, dan pemecahan masalah.</p>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="p-4 rounded-2xl bg-white text-center border border-slate-200"><div class="text-sm font-black text-slate-900">35 Soal</div></div>
+            <div class="p-4 rounded-2xl bg-white text-center border border-slate-200"><div class="text-sm font-black text-slate-900">30 Menit</div></div>
+          </div>
+        </div>
+        <div class="p-10 rounded-[48px] bg-slate-50 border border-slate-100 hover:border-cyan-600/30 transition-all group shadow-sm">
+          <div class="w-20 h-20 rounded-3xl bg-gradient-to-br from-rose-600 to-rose-500 flex items-center justify-center text-white mb-8 shadow-xl">
+            <i data-lucide="user" class="w-10 h-10"></i>
+          </div>
+          <h3 class="text-3xl font-black text-slate-900 mb-2">TKP</h3>
+          <p class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-6">Tes Karakteristik Pribadi</p>
+          <p class="text-slate-600 text-sm mb-10 leading-relaxed font-medium">Integritas, etika, semangat kerja, dan pelayanan publik.</p>
+          <div class="grid grid-cols-2 gap-4">
+            <div class="p-4 rounded-2xl bg-white text-center border border-slate-200"><div class="text-sm font-black text-slate-900">45 Soal</div></div>
+            <div class="p-4 rounded-2xl bg-white text-center border border-slate-200"><div class="text-sm font-black text-slate-900">35 Menit</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-white pt-32 pb-16 border-t border-slate-100 relative">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-4 gap-20 mb-24">
+        <div class="lg:col-span-2">
+           <div class="flex items-center gap-4 mb-8">
+            <div class="w-14 h-14 bg-gradient-to-br from-cyan-600 to-indigo-600 rounded-2xl flex items-center justify-center text-white shadow-xl">
+              <i data-lucide="graduation-cap" class="w-8 h-8"></i>
+            </div>
+            <div>
+              <h3 class="text-2xl font-black text-slate-900 tracking-tighter">CATATAN GURU IPS</h3>
+              <p class="text-[10px] text-cyan-600 font-black tracking-[0.4em] uppercase">Built for Future Educators</p>
+            </div>
+          </div>
+          <p class="text-slate-600 text-lg leading-relaxed mb-10 max-w-sm font-medium">
+            Pionir platform edukasi digital yang dikelola oleh pendidik untuk memajukan kualitas literasi guru di seluruh nusantara.
+          </p>
+          <div class="flex gap-4">
+            <a href="https://facebook.com/pamungkas.toer" target="_blank" class="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 hover:text-cyan-600 hover:bg-slate-100 transition-all"><i data-lucide="facebook"></i></a>
+            <a href="https://x.com/@kangtoer" target="_blank" class="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 hover:text-cyan-600 hover:bg-slate-100 transition-all"><i data-lucide="twitter"></i></a>
+            <a href="https://instagram.com/kangtoer" target="_blank" class="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 hover:text-cyan-600 hover:bg-slate-100 transition-all"><i data-lucide="instagram"></i></a>
+            <a href="https://www.youtube.com/@KangToer" target="_blank" class="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-500 hover:text-cyan-600 hover:bg-slate-100 transition-all"><i data-lucide="youtube"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4 class="text-slate-900 font-black text-xs uppercase tracking-widest mb-8">Resources</h4>
+          <ul class="space-y-4 text-slate-600 font-bold text-sm">
+            <li><a href="#tools" class="hover:text-cyan-600 transition-colors">Modul Ajar IPS</a></li>
+            <li><a href="#skd" class="hover:text-cyan-400 transition-colors">Persiapan CPNS</a></li>
+            <li><a href="#" class="hover:text-cyan-400 transition-colors">EdTech Tutorial</a></li>
+            <li><a href="#about" class="hover:text-cyan-400 transition-colors">About Developer</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="pt-10 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center gap-6">
+        <p class="text-slate-500 text-[10px] font-black uppercase tracking-[0.2em] text-center">
+          &#169; 2026 Catatan Guru IPS &#8212; Majukan Pendidikan Indonesia
+        </p>
+        <a href="https://github.com/kangtoer/cgi" target="_blank" class="flex items-center gap-2 px-6 py-3 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 font-bold text-xs hover:bg-slate-100 transition-all">
+          <i data-lucide="github" class="w-4 h-4"></i> View on GitHub
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+    // Navbar scroll effect
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 20) {
+        nav.classList.add('bg-white/80', 'backdrop-blur-xl', 'border-b', 'py-3');
+        nav.classList.remove('bg-transparent', 'py-6');
+      } else {
+        nav.classList.remove('bg-white/80', 'backdrop-blur-xl', 'border-b', 'py-3');
+        nav.classList.add('bg-transparent', 'py-6');
+      }
+    });
+  </script>
+</body>
+</html>
