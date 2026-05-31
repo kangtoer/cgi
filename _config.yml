@@ -1,0 +1,14 @@
+theme: null
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+plugins: []
+future: true
+lsi: false
+safe: true
+source: .
+incremental: false
+highlighter: rouge
+gist:
+  noscript: false
